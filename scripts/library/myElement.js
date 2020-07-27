@@ -29,7 +29,7 @@ function Position(curentX, curentY) {
    * za override ...
    */
   this.onTargetReached = function () {
-    console.log("Object reached target position.")
+     console.log("%c" + "Object reached target position.", "background: #333; color: lime");
   };
 
   // Parameters
@@ -60,6 +60,7 @@ function Position(curentX, curentY) {
   };
 
   this.translateByX = function (x_) {
+    console.log("%c" + "Test translateByX !", "background: #333; color: lime");
     this.IN_MOVE = true;
     this.targetX = x_;
   };
