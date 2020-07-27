@@ -28,7 +28,9 @@ function Position(curentX, curentY) {
    * Ova funkcija je prazna ona je namenjena
    * za override ...
    */
-  this.ON_TARGET_POSITION = function () {};
+  this.onTargetReached = function () {
+    console.log("Object reached target position.")
+  };
 
   // Parameters
   // Parametri neophodni za matematicku operaciju `translacija`
@@ -116,11 +118,11 @@ function Position(curentX, curentY) {
 
   }
 
-  this.X = function () {
+  this.getX = function () {
     return window.innerWidth / 100 * this.x;
   }
 
-  this.Y = function () {
+  this.getY = function () {
     return window.innerHeight / 100 * this.y;
   }
 }
