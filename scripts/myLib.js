@@ -1,6 +1,21 @@
+/**
+ * Vanilla js
+ */
 
+window.onload = function() {
 
-console.info("Application started here.");
+  // objekat je instanca klase myElement
 
-// objekat je instanca klase myElement
-var objekat = new myElement()
+  var options = {
+    bgColor: 'black',
+    color: 'lime'
+  };
+
+  var objekat = new myElement(options)
+
+  /** Kad prebacis nesto na `this.`
+   *  onda je to postao property te klase i lako mozes pristupiti
+   *  na sledeci nacin.
+   */
+   console.log("Access objekt => ", objekat.dom.innerHTML)
+}

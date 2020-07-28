@@ -126,28 +126,42 @@ function Position(curentX, curentY) {
   this.getY = function () {
     return window.innerHeight / 100 * this.y;
   }
+
+  this.getXPixel = function () {
+    return (window.innerWidth / 100 * this.x) + 'px';
+  }
+
+  this.getYPixel = function () {
+    return (window.innerHeight / 100 * this.y) + 'px';
+  }
+
 }
 
 
  /**
   * Main class
   */
- function myElement () {
+ function myElement (options) {
 
   this.type = "abosolute";
+
   this.position = new Position(100, 100);
 
-  console.info("Class myElement is constructed with type => ", this.type)
-  console.info(" position => ", this.position.x)
+  this.dom = document.createElement("div");
+  this.dom.setAttribute("id", "mydiv");
+  this.dom.style.position = "absolute";
+  this.dom.style.display = "block";
+  this.dom.style.height = "100px";
+  this.dom.style.width = "100px";
 
-  var div = document.createElement("div");
-  div.setAttribute("id", "mydiv");
-  div.style.display = "block";
-  div.style.height = "10px";
-  div.style.width = "10px";
-  div.style.position = "absolute";
-  div.append('test')
-  // test case, append the div to the body
-  document.body.appendChild(div);
+  // Obrati paznju ovde
+  this.dom.style.color = options.color;
+  this.dom.style.background = options.bgColor;
+
+  this.dom.innerHTML = 'MY FIRST ELEMENT';
+  document.body.appendChild(this.dom);
+
+  console.info('Element added.')
+
  }
 
