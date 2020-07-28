@@ -140,4 +140,15 @@ function Position(curentX, curentY) {
   console.info("Class myElement is constructed with type => ", this.type)
   console.info(" position => ", this.position.x)
 
+
+  var div = document.createElement("div");
+  div.setAttribute("id", "mydiv");
+  div.style.display = "block";
+  div.style.height = "10px";
+  div.style.width = "10px";
+  div.style.position = "absolute";
+  div.append('test')
+  // test case, append the div to the body
+  document.body.appendChild(div);
  }
+
