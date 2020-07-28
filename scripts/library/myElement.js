@@ -54,7 +54,7 @@ function Position(curentX, curentY) {
     if (typeof num_ === "number") {
       this.thrust = num_;
     } else {
-      console.warn("SYS : warning for method 'POSITION.SET_SPEED'  Desciption : arguments (w , h ) must be type of number.");
+      console.warn("App: warning for method 'setSpeed'  Desciption : argument (num_) must be type of number.");
     }
 
   };
@@ -112,7 +112,7 @@ function Position(curentX, curentY) {
         this.x = this.targetX;
         this.y = this.targetY;
         this.IN_MOVE = false;
-        ROOT.ON_TARGET_POSITION();
+        root.onTargetReached();
 
       }
     }
@@ -145,21 +145,28 @@ function Position(curentX, curentY) {
 
   this.type = "abosolute";
 
-  this.position = new Position(100, 100);
+  this.position = new Position(0, 0);
+  registerAutoUpdate.push(this);
 
   this.dom = document.createElement("div");
-  this.dom.setAttribute("id", "mydiv");
+  this.dom.setAttribute("id", options.name);
   this.dom.style.position = "absolute";
-  this.dom.style.display = "block";
-  this.dom.style.height = "100px";
-  this.dom.style.width = "100px";
+  this.dom.style.display  = "block";
+  this.dom.style.height   = "75px";
+  this.dom.style.width    = "75px";
 
   // Obrati paznju ovde
   this.dom.style.color = options.color;
   this.dom.style.background = options.bgColor;
 
-  this.dom.innerHTML = 'MY FIRST ELEMENT';
+  this.dom.innerHTML = 'LUDO';
   document.body.appendChild(this.dom);
+
+  // auto update
+  this.update = function() {
+    this.dom.style.left = this.position.getXPixel()
+    this.dom.style.top = this.position.getYPixel()
+  };
 
   console.info('Element added.')
 
