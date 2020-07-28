@@ -112,7 +112,7 @@ function Position(curentX, curentY) {
         this.x = this.targetX;
         this.y = this.targetY;
         this.IN_MOVE = false;
-        ROOT.onTargetReached();
+        ROOT.ON_TARGET_POSITION();
 
       }
     }
@@ -126,15 +126,6 @@ function Position(curentX, curentY) {
   this.getY = function () {
     return window.innerHeight / 100 * this.y;
   }
-
-  this.getXPixel = function () {
-    return (window.innerWidth / 100 * this.x) + "px";
-  }
-
-  this.getYPixel = function () {
-    return (window.innerHeight / 100 * this.y) + "px";
-  }
-
 }
 
 
@@ -148,7 +139,6 @@ function Position(curentX, curentY) {
 
   console.info("Class myElement is constructed with type => ", this.type)
   console.info(" position => ", this.position.x)
-
 
   var div = document.createElement("div");
   div.setAttribute("id", "mydiv");
