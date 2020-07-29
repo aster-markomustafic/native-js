@@ -137,27 +137,68 @@ function Position(curentX, curentY) {
 
 }
 
+function Dimensions(w, h) {
+
+  // NAPISI PROVERU TIPA
+  // ZA SLUCASJ DA w i h nisu definisani
+  this.w = w;
+  this.h = h;
+
+  this.getWidth = function () {
+    return window.innerWidth / 100 * this.w;
+  }
+
+  this.getHeight = function () {
+    return window.innerHeight / 100 * this.h;
+  }
+
+  this.getWidthPixel = function () {
+    return (window.innerWidth / 100 * this.w) + 'px';
+  }
+
+  this.getHeightPixel = function () {
+    return (window.innerHeight / 100 * this.h) + 'px';
+  }
+
+}
 
  /**
   * Main class
   */
  function myElement (options) {
 
-  this.type = "abosolute";
+  if (typeof options === 'undefined') {
+    console.log("NApravi ovde defaultne vrednosti za options koji fali ...")
 
-  this.position = new Position(0, 0);
+    options = {
+      // .... sve nabroj ovde
+    };
+  }
+
+  // A ovde napravi pojedinacni check type
+  // primer
+
+  if (typeof options.type === 'undefined') {
+    options.type = 'absolute';
+  }
+
+  this.type = options.type;
+  this.position = new Position(options.position.x, options.position.y);
+  this.dimension = new Dimensions(options.dimension.width, options.dimension.height);
   registerAutoUpdate.push(this);
 
   this.dom = document.createElement("div");
   this.dom.setAttribute("id", options.name);
-  this.dom.style.position = "absolute";
+  this.dom.style.position = this.type;
   this.dom.style.display  = "block";
-  this.dom.style.height   = "75px";
-  this.dom.style.width    = "75px";
+
+  this.dom.style.width = this.dimension.getWidthPixel();
+  this.dom.style.height  = this.dimension.getHeightPixel();
 
   // Obrati paznju ovde
   this.dom.style.color = options.color;
   this.dom.style.background = options.bgColor;
+  this.dom.style.border = options.border;
 
   this.dom.innerHTML = 'LUDO';
   document.body.appendChild(this.dom);
@@ -168,7 +209,7 @@ function Position(curentX, curentY) {
     this.dom.style.top = this.position.getYPixel()
   };
 
-  console.info('Element added.')
+  console.info('Element ' + this.name + 'added.')
 
  }
 
