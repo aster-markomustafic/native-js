@@ -175,6 +175,7 @@ function myElement (options, onClick) {
     // --------------------------------------------------------------------------------
 
     options = {
+      content: "EMPTY",
       position: new Position(45, 45),
       dimension: new Dimensions(5, 5),
       type: 'absolute',
@@ -190,6 +191,9 @@ function myElement (options, onClick) {
     // --------------------------------------------------------------------------------
     // options kao arg je definisan ali i dalje nismo sigurni sta je sve u njemu definisano
     // --------------------------------------------------------------------------------
+    if (typeof options.content === 'undefined') {
+       options.content = "EMPTY"
+    }
     if (typeof options.position === 'undefined') {
        options.position = new Position(45, 45);
     }
@@ -243,7 +247,7 @@ function myElement (options, onClick) {
   this.dom.style.border = options.border;
 
   // CONTENT STAFF
-  this.dom.innerHTML = 'LUDO';
+  this.dom.innerHTML = options.content;
 
   if (typeof onClick !== 'undefined') {
     this.dom.addEventListener("click", onClick, false);

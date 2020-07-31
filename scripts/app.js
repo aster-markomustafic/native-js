@@ -11,6 +11,7 @@ window.onload = function() {
 
   var options = {
     // name: 'MojElement', // uniq
+    content: "ja sam dugme",
     position: { x: 45 , y : 25 },
     bgColor: 'black',
     color: 'lime',
@@ -24,27 +25,28 @@ window.onload = function() {
 
   objekat = new myElement(options, testClick);
 
-  /*
+
   var elementsInBox = [];
   var r = 0, g = 0 , b = 0;
 
-  for (var j = 0; j < 50 ; j++) {
-    for (var i = 0; i < 50 ; i++) {
-      r = j / 2 + 100
-      g = r / 2
-      b = g / 2
+  for (var j = 0; j < 10 ; j++) {
+    for (var i = 0; i < 10 ; i++) {
+      r = i * 2
+      g = i + j * 2
+      b = i + i * 2 + j * 2
       var optionsBox = {
         name: "id" + j,
-        position: { x: j* 2, y : i* 2},
-        dimension: { width: 5 , height: 5 },
-        bgColor: "rgb(" + r + " , " + g + " , " + b + " )",
+        content: "VOODOO PEOPLE",
+        position: { x: j * 9.989, y : i * 9.97},
+        dimension: { width: 10 , height: 10 },
+        bgColor: "rgb(" + r + " , " + g * 2 + " , " + b + " )",
         border: 'solid lime 1px',
       };
       elementsInBox.push(new myElement(optionsBox));
 
     }
   }
-  */
+
 
   /** Kad prebacis nesto na `this.`
    *  onda je to postao property te klase i lako mozes pristupiti
