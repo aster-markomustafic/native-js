@@ -172,6 +172,9 @@ function Dimensions(w, h) {
 
     options = {
       // .... sve nabroj ovde
+      type: 'absolute',
+      alignTxt: 'center',
+      
     };
   }
 
@@ -180,6 +183,9 @@ function Dimensions(w, h) {
 
   if (typeof options.type === 'undefined') {
     options.type = 'absolute';
+  }
+  if (typeof options.alignTxt === 'undefined') {
+    options.alignTxt = 'center';
   }
 
   this.type = options.type;
@@ -190,6 +196,7 @@ function Dimensions(w, h) {
   this.dom = document.createElement("div");
   this.dom.setAttribute("id", options.name);
   this.dom.style.position = this.type;
+  this.dom.style.textAlign = this.alignTxt;
   this.dom.style.display  = "block";
 
   this.dom.style.width = this.dimension.getWidthPixel();
