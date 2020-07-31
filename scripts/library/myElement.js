@@ -166,9 +166,7 @@ function Dimensions(w, h) {
   * @description
   * Main class
   */
-function myElement (options, onCLick) {
-
-  this.dom.onCLick
+function myElement (options, onClick) {
 
   if (typeof options === 'undefined') {
 
@@ -180,7 +178,7 @@ function myElement (options, onCLick) {
       position: new Position(45, 45),
       dimension: new Dimensions(5, 5),
       type: 'absolute',
-      alignTxt: 'center',
+      textAlign: 'center',
       color: 'white',
       bgColor: 'black',
       border: "solid red 1px",
@@ -192,8 +190,6 @@ function myElement (options, onCLick) {
     // --------------------------------------------------------------------------------
     // options kao arg je definisan ali i dalje nismo sigurni sta je sve u njemu definisano
     // --------------------------------------------------------------------------------
-
-    console.info("Load default values for undefined option.")
     if (typeof options.position === 'undefined') {
        options.position = new Position(45, 45);
     }
@@ -203,8 +199,8 @@ function myElement (options, onCLick) {
     if (typeof options.type === 'undefined') {
       options.type = 'absolute';
     }
-    if (typeof options.alignTxt === 'undefined') {
-      options.alignTxt = 'center';
+    if (typeof options.textAlign === 'undefined') {
+      options.textAlign = 'center';
     }
     if (typeof options.color === 'undefined') {
       options.color = 'white';
@@ -215,11 +211,14 @@ function myElement (options, onCLick) {
     if (typeof options.border === 'undefined') {
       options.border = 'solid red 1px';
     }
+    if (typeof options.name === 'undefined') {
+      options.name = 'randomname' + randomIntFromInterval(1, 100000) +
+        + "_" +randomIntFromInterval(1, 100000);
+    }
 
-    // ...
   }
 
-  
+
   // --------------------------------------------------------------------------------
   // --------------------------------------------------------------------------------
   // --------------------------------------------------------------------------------
@@ -229,21 +228,28 @@ function myElement (options, onCLick) {
   this.dimension = new Dimensions(options.dimension.width, options.dimension.height);
   registerAutoUpdate.push(this);
 
+  // DOM ELEMENT
   this.dom = document.createElement("div");
   this.dom.setAttribute("id", options.name);
+  this.name = options.name;
   this.dom.style.position = this.type;
-  this.dom.style.textAlign = this.alignTxt;
+  this.dom.style.textAlign = options.textAlign;
   this.dom.style.display  = "block";
-
   this.dom.style.width = this.dimension.getWidthPixel();
   this.dom.style.height  = this.dimension.getHeightPixel();
-
-  // Obrati paznju ovde
+  // SOLORS AND THERE HERE
   this.dom.style.color = options.color;
   this.dom.style.background = options.bgColor;
   this.dom.style.border = options.border;
 
+  // CONTENT STAFF
   this.dom.innerHTML = 'LUDO';
+
+  if (typeof onClick !== 'undefined') {
+    this.dom.addEventListener("click", onClick, false);
+    console.info("Click event added.")
+  }
+
   document.body.appendChild(this.dom);
 
   // auto update
@@ -252,7 +258,7 @@ function myElement (options, onCLick) {
     this.dom.style.top = this.position.getYPixel()
   };
 
-  console.info('Element ' + this.name + 'added.')
+  console.info('Element ' + this.name + ' added.')
 
  }
 

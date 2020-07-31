@@ -10,7 +10,7 @@ window.onload = function() {
   // objekat je instanca klase myElement
 
   var options = {
-    name: 'MojElement', // uniq
+    // name: 'MojElement', // uniq
     position: { x: 45 , y : 25 },
     bgColor: 'black',
     color: 'lime',
@@ -18,21 +18,11 @@ window.onload = function() {
     dimension: { width: 5 , height: 5 },
   };
 
-  objekat = new myElement(options);
-
-
-  // Test sa praznim
-  objekat2 = new myElement();
-
-  var options3 = {
-    name: 'MojElement2',
-    position: { x: 5 , y : 5 },
-    bgColor: 'black',
-    color: 'lime',
-    border: 'solid lime 1px',
+  var testClick = function() {
+    alert("COOL MAN")
   };
 
-  objekat3 = new myElement(options3);
+  objekat = new myElement(options, testClick);
 
   /*
   var elementsInBox = [];
@@ -60,7 +50,7 @@ window.onload = function() {
    *  onda je to postao property te klase i lako mozes pristupiti
    *  na sledeci nacin.
    */
-   console.log("Access objekt => ", objekat.dom.innerHTML)
+   // console.log("Access objekt => ", objekat.dom.innerHTML)
 
 
   /**
