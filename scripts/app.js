@@ -31,9 +31,9 @@ window.onload = function() {
 
   for (var j = 0; j < 10 ; j++) {
     for (var i = 0; i < 10 ; i++) {
-      r = i * 2
-      g = i + j * 2
-      b = i + i * 2 + j * 2
+      r = i * 5
+      g = i + j * 5
+      b = i + i * 5 + j * 5
       var optionsBox = {
         name: "id" + j,
         content: "VOODOO PEOPLE",
