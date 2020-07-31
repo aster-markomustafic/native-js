@@ -18,7 +18,21 @@ window.onload = function() {
     dimension: { width: 5 , height: 5 },
   };
 
-  objekat = new myElement(options)
+  objekat = new myElement(options);
+
+
+  // Test sa praznim
+  objekat2 = new myElement();
+
+  var options3 = {
+    name: 'MojElement2',
+    position: { x: 5 , y : 5 },
+    bgColor: 'black',
+    color: 'lime',
+    border: 'solid lime 1px',
+  };
+
+  objekat3 = new myElement(options3);
 
   /*
   var elementsInBox = [];

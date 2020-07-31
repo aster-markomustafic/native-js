@@ -163,30 +163,63 @@ function Dimensions(w, h) {
 }
 
  /**
+  * @description
   * Main class
   */
- function myElement (options) {
+function myElement (options) {
 
   if (typeof options === 'undefined') {
-    console.log("NApravi ovde defaultne vrednosti za options koji fali ...")
+
+    // --------------------------------------------------------------------------------
+    // options nije definisan. Definisemo ga sa defoltnim vrednostima.
+    // --------------------------------------------------------------------------------
 
     options = {
-      // .... sve nabroj ovde
+      position: new Position(45, 45),
+      dimension: new Dimensions(5, 5),
       type: 'absolute',
       alignTxt: 'center',
-      
+      color: 'white',
+      bgColor: 'black',
+      border: "solid red 1px",
     };
+    console.info("Default options value loaded.")
+
+  } else {
+
+    // --------------------------------------------------------------------------------
+    // options kao arg je definisan ali i dalje nismo sigurni sta je sve u njemu definisano
+    // --------------------------------------------------------------------------------
+
+    console.info("Load default values for undefined option.")
+    if (typeof options.position === 'undefined') {
+       options.position = new Position(45, 45);
+    }
+    if (typeof options.dimension === 'undefined') {
+      options.dimension = new Dimensions(5, 5)
+    }
+    if (typeof options.type === 'undefined') {
+      options.type = 'absolute';
+    }
+    if (typeof options.alignTxt === 'undefined') {
+      options.alignTxt = 'center';
+    }
+    if (typeof options.color === 'undefined') {
+      options.color = 'white';
+    }
+    if (typeof options.bgColor === 'undefined') {
+      options.bgColor = 'black';
+    }
+    if (typeof options.border === 'undefined') {
+      options.border = 'solid red 1px';
+    }
+
+    // ...
   }
 
-  // A ovde napravi pojedinacni check type
-  // primer
-
-  if (typeof options.type === 'undefined') {
-    options.type = 'absolute';
-  }
-  if (typeof options.alignTxt === 'undefined') {
-    options.alignTxt = 'center';
-  }
+  // --------------------------------------------------------------------------------
+  // --------------------------------------------------------------------------------
+  // --------------------------------------------------------------------------------
 
   this.type = options.type;
   this.position = new Position(options.position.x, options.position.y);
