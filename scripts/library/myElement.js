@@ -166,7 +166,9 @@ function Dimensions(w, h) {
   * @description
   * Main class
   */
-function myElement (options) {
+function myElement (options, onCLick) {
+
+  this.dom.onCLick
 
   if (typeof options === 'undefined') {
 
@@ -217,6 +219,7 @@ function myElement (options) {
     // ...
   }
 
+  
   // --------------------------------------------------------------------------------
   // --------------------------------------------------------------------------------
   // --------------------------------------------------------------------------------
