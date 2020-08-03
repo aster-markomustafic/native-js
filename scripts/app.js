@@ -16,7 +16,7 @@ window.onload = function() {
     bgColor: 'black',
     color: 'lime',
     border: 'solid lime 1px',
-    dimension: { width: 5 , height: 5 },
+    dimension: { width: 15 , height: 15 },
   };
 
   var testClick = function() {
@@ -25,7 +25,7 @@ window.onload = function() {
 
   objekat = new myElement(options, testClick);
 
-
+  /*
   var elementsInBox = [];
   var r = 0, g = 0 , b = 0;
 
@@ -46,6 +46,8 @@ window.onload = function() {
 
     }
   }
+  */
+
 
 
   /** Kad prebacis nesto na `this.`
